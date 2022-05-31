@@ -1,0 +1,42 @@
+version: "3.9"
+networks:
+  private_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: ${SERVICES_SUBNET:-10.45.0.0/24}
+
+services:
+  minecraft:
+    image: itzg/minecraft-server
+    container_name: mc
+    hostname: mc
+    volumes:
+      - "./data/mc:/data"
+    environment:
+      EULA: "TRUE"
+      VERSION: ${MC_VERSION:-LATEST}
+      FORCE_GAMEMODE: ${MC_FORCE_GAMEMODE:-false}
+      SNOOPER_ENABLED: false
+      MODE: ${MC_MODE:-survival}
+      PVP: ${MC_PVP:-false}
+      ONLINE_MODE: false
+      INIT_MEMORY: ${MC_INIT_MEMORY:-4G}
+      MAX_MEMORY: ${MC_MAX_MEMORY:-8G}
+      DIFFICULTY: ${MC_DIFFICULTY:-easy}
+      WHITELIST: ${MC_WHITELIST}
+      ENABLE_WHITELIST: true
+      ENFORCE_WHITELIST: true
+      OVERRIDE_WHITELIS: true
+      OPS: ${MC_OPS}
+      OVERRIDE_OPS: true
+      ENABLE_RCON: false
+      SPAWN_PROTECTION: ${SPAWN_PROTECTION:-0}
+    ports:
+      - "${MC_PORT:-25565}:${MC_PORT:-25565}/tcp"
+    networks:
+      private_network:
+        ipv4_address: ${MC_LOCAL_IP:-10.45.0.3}
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
