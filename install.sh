@@ -35,7 +35,7 @@ MC_WHITELIST= # -mw|--mc-whitelist _
 MC_OPS= # -mo|--mc-ops _
 MC_MODE="survival" # -m|--mc-mode _
 MC_INIT_MEMORY="4G" # -mi|--mc-init-memory _
-MAX_MEMORY="8G" # -mm|--max-memory _
+MC_MAX_MEMORY="8G" # -mm|--max-memory _
 MC_DIFFICULTY="easy" # -md|--mc-difficulty _
 
 WITH_FIREWALL="true" # -wf|--without_firewall
@@ -292,7 +292,7 @@ Options:
         List of operators on the server, separated by commas.
   -mi, --mc-init-memory MC_INIT_MEMORY
         Initial memory allocated to the server, by default '4G'.
-  -mm, --max-memory MAX_MEMORY
+  -mm, --max-memory MC_MAX_MEMORY
         Maximum memory allocated to the server, by default '8G'.
   -m, --mc-mode MC_MODE
         Minecraft server mode, by default 'survival'.
@@ -415,7 +415,7 @@ set_mc_init_memory() {
 }
 
 set_mc_max_memory() {
-  MAX_MEMORY=$1
+  MC_MAX_MEMORY=$1
 }
 
 # -------------------------------------------------------------------------------
@@ -641,7 +641,7 @@ MC_WHITELIST=${MC_WHITELIST}
 MC_OPS=${MC_OPS}
 MC_MODE=${MC_MODE}
 MC_INIT_MEMORY=${MC_INIT_MEMORY}
-MAX_MEMORY=${MAX_MEMORY}
+MC_MAX_MEMORY=${MC_MAX_MEMORY}
 MC_DIFFICULTY=${MC_DIFFICULTY}
 MC_PVP=${MC_PVP}
 MC_VERSION=${MC_VERSION}

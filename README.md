@@ -57,7 +57,7 @@ Options:
         List of operators on the server, separated by commas.
   -mi, --mc-init-memory MC_INIT_MEMORY
         Initial memory allocated to the server, by default '4G'.
-  -mm, --max-memory MAX_MEMORY
+  -mm, --max-memory MC_MAX_MEMORY
         Maximum memory allocated to the server, by default '8G'.
   -m, --mc-mode MC_MODE
         Minecraft server mode, by default 'survival'.
